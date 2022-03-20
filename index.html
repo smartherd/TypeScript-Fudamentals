@@ -1,0 +1,59 @@
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/yeti.bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <title>Quick Math</title>
+</head>
+
+<body>
+    <div class="navbar navbar-inverse">
+        <div class="navbar-header">
+        <h4 class="navbar-brand"><strong> Quick Math</strong></h4>
+        </div>
+    </div>
+
+    <div class="form-horizontal" id="nameform">
+        <div class="form-group">
+            <label for="playerName" class="col-sm-2 control-label">Player Name</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" id="playerName" placeholder="Name">
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary btn-sm" id="showNumbers">Show Numbers</button>
+              </div>
+        </div>
+    </div>
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label for="gameNumbers" class="col-sm-2 control-label">Your numbers are:</label>
+
+            <div class="col-sm-2">
+                <span class="label-default form-control" id="gameNumbers"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-4">
+                <button type="button" class="btn btn-sm btn-primary" id="startGame">Start Game</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-horizontal" id="mathGame"></div>
+        
+    <div class="col-sm-offset-2 col-sm-6">
+        <h2>Scoreboard: <small id="playerScore">No Scores Yet</small> </h2>
+    </div>
+
+    <div class="col-sm-offset-2 col-sm-10" id="message"></div>
+    
+    <!-- add script tags here -->
+    <script src="bundle.js"></script>
+    
+</body>
+</html>
