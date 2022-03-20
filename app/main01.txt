@@ -1,14 +1,20 @@
 // Function executes when Start Game button is clicked
 function startGame() {
 
-    let playerName: string | undefined = getInputVal('playerName');
+    let playerName: string = "Annanya";
 
-    // Calling function 2 times to check the use of function type with logger
-    displayScore(10, playerName);
-    displayScore(-10, playerName);
+    let welcomeMessage = welcomePlayer(playerName);
+    
+    var messageElement = document.getElementById('message');
+    messageElement!.innerText  = welcomeMessage;
 }
 
 document.getElementById('startGame')!.addEventListener('click', startGame);
+
+function welcomePlayer(name) {
+    return `Hello ${name}! Let's start a new game..`;
+}
+
 
 /**
  * Fetch input data
@@ -34,24 +40,22 @@ function getInputVal(elementID: string): string | undefined {
  * @returns void
  */
 function displayScore(score: number, playerName: string = "Math Player"): void {
-
-    // Varible declared as function type, takes one string parameter, returns void
-    let logger: (value: string) => void;
-
-    if (score < 0) {
-        logger = logError;
-    } else {
-        logger = logMessage;
-    }
-
-    // Using the variable(of function type) to call the appropriate function, depending on score
-    logger(`Score -> ${score}`);
-
     const scoreElement: HTMLElement | null = document.getElementById('playerScore');
     scoreElement!.innerText = `${playerName}, your score -> ${score}`;
 }
 
-// two functions of same type
-// takes one string parameter and returns void
+// Using arrow functions
+// FUnction parameter on the left of '=>', function body on the right
 let logMessage = (message: string) => console.log(message);
-let logError = (message: string) => console.error(message);
+
+// Using the variable to call function and passing the string paramater 
+logMessage('Welcome to Test Your Math Game');
+
+
+// Regular plain old javascript function
+function demoFunc1(param1, param2) {}
+
+// Function with type annotations
+function demoFunc2(param1: string, param2: string) : boolean {
+    return true;
+}
