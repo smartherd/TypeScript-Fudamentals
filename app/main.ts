@@ -1,23 +1,49 @@
-import { Game } from './game';
-import { Player } from './player';
-import { getUserInput } from './helper';
+// Function executes when Start Game button is clicked
+function startGame() {
 
-let newGame: Game;
+    let playerName: string | undefined = getInputVal('playerName');
+    displayScore(10, playerName);
+    displayScore(-10, playerName);
+}
 
-// add click handler to the show number button
-document.getElementById('showNumbers')!.addEventListener('click', () => {
-  console.log('showing numbers');
-  
-  const player: Player = new Player();
-  player.name = getUserInput('playerName') || 'Math Player';
+document.getElementById('startGame')!.addEventListener('click', startGame);
 
-  newGame = new Game(player);
-  newGame.displayNumbers();
+/**
+ * Fetch input data
+ * @param elementID 
+ * @returns input element
+ */
+function getInputVal(elementID: string): string | undefined {
 
-});
+    const inputElement: HTMLInputElement = <HTMLInputElement>document.getElementById(elementID);
 
-// add click handler to the start game button
-document.getElementById('startGame')!.addEventListener('click', () => {
-    console.log("game started");
-    newGame.displayGame();
-});
+    if (inputElement.value === '') {
+        return undefined;
+    } else {
+        return inputElement.value;
+    }
+}
+
+/**
+ * Display score of the player
+ * @param score 
+ * @param playerName 
+ * @returns void
+ */
+function displayScore(score: number, playerName: string = "Math Player"): void {
+
+    let logger: (value: string) => void;
+
+    if (score < 0) {
+        logger = logError;
+    } else {
+        logger = logMessage;
+    }
+    logger(`Score -> ${score}`);
+
+    const scoreElement: HTMLElement | null = document.getElementById('playerScore');
+    scoreElement!.innerText = `${playerName}, your score -> ${score}`;
+}
+
+let logMessage = (message: string) => console.log(message);
+let logError = (message: string) => console.error(message);
