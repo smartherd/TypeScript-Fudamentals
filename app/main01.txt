@@ -1,0 +1,37 @@
+// Function executes when Start Game button is clicked
+function startGame() {
+
+    // Declaring variable with type annotation
+    let playerName: string = "Annanya";
+    
+    // Declaring variable without type annotation
+    let age = 6;
+    
+    let welcomeMessage = welcomePlayer(playerName);
+
+    var messageElement = document.getElementById('message');
+    messageElement!.innerText  = welcomeMessage;
+}
+
+document.getElementById('startGame')!.addEventListener('click', startGame);
+
+/**
+ * To demostrate type inference 
+ * @param name 
+ * @returns string
+ */
+function welcomePlayer(name) {
+    return `Hello ${name}! Let's start a new game..`;
+}
+
+// Using var to declare variable
+var myString = 'Hello World';
+console.log(myString);
+
+// Using let to declare variable
+let myString2 = 'Hello World';
+console.log(myString);
+
+// Using const to declare variable
+const myString3 = 'Hello World';
+console.log(myString);

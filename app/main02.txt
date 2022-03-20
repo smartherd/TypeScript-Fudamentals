@@ -1,0 +1,37 @@
+// Function executes when Start Game button is clicked
+function startGame() {
+
+    // Using union type annotation
+    let playerName: string | number = "Annanya";
+    playerName = 6;
+    
+    // control flow-based analysis
+    if (typeof playerName === 'string' ) {
+        return playerName;
+    } else {
+        return playerName;
+    }
+
+    let welcomeMessage = welcomePlayer(playerName);
+
+    var messageElement = document.getElementById('message');
+    messageElement!.innerText  = welcomeMessage;
+}
+
+document.getElementById('startGame')!.addEventListener('click', startGame);
+
+function welcomePlayer(name) {
+    return `Hello ${name}! Let's start a new game..`;
+}
+
+// Demonstrating null and undefined types
+let playerName: string | undefined | null = "Annanya";
+playerName = null;
+playerName = undefined;
+
+// Use of 'any' type  
+let anyValue: any = 10;
+
+// Type assertion
+let finalString: string = (<number>anyValue).toFixed(5);
+let finalString2: string = (anyValue as number).toFixed(5);
