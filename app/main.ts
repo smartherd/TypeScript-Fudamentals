@@ -1,6 +1,5 @@
-import { Game } from './game';
-import { Player } from './player';
-import { getUserInput } from './helper';
+/// <reference path="player.ts" />
+/// <reference path="game.ts" />
 
 let newGame: Game;
 
@@ -9,7 +8,7 @@ document.getElementById('showNumbers')!.addEventListener('click', () => {
   console.log('showing numbers');
   
   const player: Player = new Player();
-  player.name = getUserInput('playerName') || 'Math Player';
+  player.name = Helper.getInputVal('playerName') || 'Math Player';
 
   newGame = new Game(player);
   newGame.displayNumbers();

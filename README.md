@@ -1,2 +1,5 @@
-# TypeScript-Fudamentals
-Learn TypeScript by creating a Game. TODO
+File name: person01.txt
+Topics demostrated:
+    - Created basic interface
+    - interface extends interface
+    - structure type system using interface

@@ -1,6 +1,7 @@
-import { Person } from './person';
+/// <reference path="person.ts" />
 
-export class Player implements Person {
+
+class Player implements Person {
     name: string;
     highScore: number;
 
