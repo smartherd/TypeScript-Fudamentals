@@ -1,13 +1,13 @@
-import * as Helpers from './helper';
-import { Result } from './result';
-import { Player } from './player';
-import { Scoreboard as ScorePanel } from './scoreboard';
+/// <reference path="helper.ts" />
+/// <reference path="result.ts" />
+/// <reference path="player.ts" />
+/// <reference path="scoreboard.ts" />
 
-export class Game {
+class Game {
     
-    private scoreboard: ScorePanel = new ScorePanel();
-    readonly randNum1: number = Helpers.getRandomNumber(10, 5);
-    readonly randNum2: number = Helpers.getRandomNumber(5, 0);
+    private scoreboard: Scoreboard = new Scoreboard();
+    readonly randNum1: number = Helper.getRandomNumber(10, 5);
+    readonly randNum2: number = Helper.getRandomNumber(5, 0);
     readonly operators: string[] = ['+', '-', '*', '/'];
     readonly problemCount: number = this.operators.length;
 
@@ -55,11 +55,11 @@ export class Game {
         // loop through the text box and calculate score
         for(let i=0; i<this.problemCount; i++) {
 
-            let inputAnswer = Helpers.getUserInput('answer' + (i+1));
+            let inputAnswer = Helper.getInputVal('answer' + (i+1));
             
             // check if there is an input answer or it is left blank            
             if (inputAnswer) {
-                answer = Number(Helpers.getUserInput('answer' + (i+1)));
+                answer = Number(Helper.getInputVal('answer' + (i+1)));
             } else {
                 continue;
             }

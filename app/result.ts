@@ -1,7 +1,7 @@
 /**
  * Result interface
 */
-export interface Result {
+interface Result {
     playerName: string;
     score: number;
     numberOfProblems: number;

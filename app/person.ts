@@ -1,7 +1,7 @@
 /**
  * Person interface
 */
-export interface Person {
+interface Person {
     name: string;
     formatName: () => string;
 }

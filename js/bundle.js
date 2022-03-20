@@ -1,37 +1,34 @@
-"use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
+class Player {
+    formatName() {
+        return this.name.toUpperCase();
     }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Game = void 0;
-const Helpers = __importStar(require("./helper"));
-const scoreboard_1 = require("./scoreboard");
+}
+class Helper {
+    static getInputVal(elementID) {
+        const inputElement = document.getElementById(elementID);
+        return inputElement.value;
+    }
+    static getRandomNumber(max, min) {
+        var randNum = Math.floor(Math.random() * (max - min + 1)) + min;
+        return randNum;
+    }
+}
+class Scoreboard {
+    createResult(newResult) {
+        this.result = newResult;
+    }
+    updateScoreboard() {
+        let output = `${this.result.playerName}: ${this.result.score}/${this.result.numberOfProblems}`;
+        const scoresElement = document.getElementById('playerScore');
+        scoresElement.innerHTML = output;
+    }
+}
 class Game {
     constructor(player) {
         this.player = player;
-        this.scoreboard = new scoreboard_1.Scoreboard();
-        this.randNum1 = Helpers.getRandomNumber(10, 5);
-        this.randNum2 = Helpers.getRandomNumber(5, 0);
+        this.scoreboard = new Scoreboard();
+        this.randNum1 = Helper.getRandomNumber(10, 5);
+        this.randNum2 = Helper.getRandomNumber(5, 0);
         this.operators = ['+', '-', '*', '/'];
         this.problemCount = this.operators.length;
     }
@@ -63,9 +60,9 @@ class Game {
         let score = 0;
         let answer;
         for (let i = 0; i < this.problemCount; i++) {
-            let inputAnswer = Helpers.getUserInput('answer' + (i + 1));
+            let inputAnswer = Helper.getInputVal('answer' + (i + 1));
             if (inputAnswer) {
-                answer = Number(Helpers.getUserInput('answer' + (i + 1)));
+                answer = Number(Helper.getInputVal('answer' + (i + 1)));
             }
             else {
                 continue;
@@ -85,5 +82,16 @@ class Game {
         document.getElementById('calculateScore').setAttribute('disabled', 'true');
     }
 }
-exports.Game = Game;
-//# sourceMappingURL=game.js.map
+let newGame;
+document.getElementById('showNumbers').addEventListener('click', () => {
+    console.log('showing numbers');
+    const player = new Player();
+    player.name = Helper.getInputVal('playerName') || 'Math Player';
+    newGame = new Game(player);
+    newGame.displayNumbers();
+});
+document.getElementById('startGame').addEventListener('click', () => {
+    console.log("game started");
+    newGame.displayGame();
+});
+//# sourceMappingURL=bundle.js.map
