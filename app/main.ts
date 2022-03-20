@@ -1,23 +1,7 @@
-import { Game } from './game';
-import { Player } from './player';
-import { getUserInput } from './helper';
+// Function executes when Start Game button is clicked
+function startGame() {
+    var messageElement = document.getElementById('message');
+    messageElement!.innerText  = 'Welcome! Starting a new game..';
+}
 
-let newGame: Game;
-
-// add click handler to the show number button
-document.getElementById('showNumbers')!.addEventListener('click', () => {
-  console.log('showing numbers');
-  
-  const player: Player = new Player();
-  player.name = getUserInput('playerName') || 'Math Player';
-
-  newGame = new Game(player);
-  newGame.displayNumbers();
-
-});
-
-// add click handler to the start game button
-document.getElementById('startGame')!.addEventListener('click', () => {
-    console.log("game started");
-    newGame.displayGame();
-});
+document.getElementById('startGame')!.addEventListener('click', startGame);
