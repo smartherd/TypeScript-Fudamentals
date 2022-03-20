@@ -1,2 +1,2 @@
 # TypeScript-Fudamentals
-Learn TypeScript by creating a Game 
+Learn TypeScript by creating a Game. 
