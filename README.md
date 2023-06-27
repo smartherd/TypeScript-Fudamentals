@@ -11,6 +11,7 @@ Name of the game is Quick Math App. This takes the player's name as input. On cl
     - Running first TypeScript Code
     - Configuration Inheritence
     - Configuring Webpack
+    good luck
 2. Built-in Data Types
     - Data Types in Typescript
     - JavaScript Hoisting
